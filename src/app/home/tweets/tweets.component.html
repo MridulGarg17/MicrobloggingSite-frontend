@@ -1,0 +1,46 @@
+﻿<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div style="color: white">
+    <ul class="navbar-nav mr-auto">
+
+      <li routerLinkActive="Active"><a routerLink="/playground">playground</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followers">followers</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followees">followees</a></li>
+      <li routerLinkActive="Active"><a routerLink="/search">Search</a></li>
+      <li routerLinkActive="Active"><a routerLink="/analytics">Analytics</a></li>
+      <li><button class="btn btn-primary" (click)="logout()" style="resize:both">logout</button> </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="panel panel-primary">
+
+    <div class="panel-heading"> Tweets </div>
+    <div class="panle-body">
+      <table class="table table-hover">
+        <thead>
+        <th>S.no</th>
+        <th>Posts</th>
+        <th>Post by</th>
+        <th>likes</th>
+        <th>Dislikes</th>
+        <th>Reaction</th>
+        <th>Twet Date</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of tweetList">
+            <td>{{t.id}}</td>
+            <td>{{t.Body}}</td>
+            <td>{{t.User_name}}</td>
+            <td>{{t.Like_count}}</td>
+            <td>{{t.dislike_count}}</td>
+            <td>{{t.reaction}}</td>
+            <td>{{t.Created_at}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,100 @@
+﻿<div class="container">
+  <div class="row vertical-offset-100">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Please sign up</h3>
+        </div>
+        <div class="panel-body">
+          <form accept-charset="UTF-8" role="form" #frm="ngForm" >
+            <fieldset>
+              <div *ngIf="checkName">
+                Name Required
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="First-Name" name="firstname" type="text" required #firstname>
+              </div>
+              <div *ngIf="checkName">
+                Name Required
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Last-Name" name="lastname" type="text"  required #lastname>
+              </div>
+              <div *ngIf="checkEmail">
+                Incorrect Email (try eg: abc@xyz.com)
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="E-mail" name="email" type="email"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email>
+              </div>
+              <div *ngIf="checkPhone">
+                Incorrect Contact number(must be 10 digit)
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="Contact" name="contact" type="text"  required pattern="[0-9]{10}" #phone>
+              </div>
+              <div *ngIf="checkImage">
+                Image Required (try source input (src:""))
+              </div>
+              <div class="form-group">
+                <input class="form-control" placeholder="image" name="image" type="text"  required #image>
+              </div>
+              
+       <div class="form-group">
+         <div *ngIf="checkCountry">
+           Country Required
+         </div>
+        <select class="form-group" #countryId>
+          <option selected>Select Country</option>
+          <option *ngFor ="let c of countrylist" [value]="c.id">{{c.name}}</option>
+        </select>
+        
+          </div>
+              <div *ngIf="checkPassword">
+                Password must be between 8-10 charactor with atleast 1 letter,1 number,1special charactor
+              </div>
+        <div class="form-group">
+          <input class="form-control" placeholder="Password" name="password" type="password" value="" pattern="(?=.*[!@#$%^&*])(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}" required #password>
+        </div>
+             
+
+        <input class="btn btn-lg btn-success btn-block" (click)="addUser(firstname.value,lastname.value,email.value,image.value,phone.value,countryId.value,password.value)" value="Signup">
+        </fieldset>
+        </form>
+          <div>
+            <button class="btn btn-primary" (click)="login()" style="margin-top:5px">login</button>
+          </div>
+      </div>
+      </div>
+    </div>
+    
+    </div>
+  <div class="image-upload">
+    <!--<img [src]="imageSrc" style="max-width:300px;max-height:300px" />-->
+    <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" />
+  </div> 
+</div>
+
+
+<!--<div class="container">
+  <h1>Hero Form</h1>
+  <form #heroform="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="firstname" required name="Firstname"  #firstname />
+  </div>
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text" class="form-control" id="alterEgo">
+    </div>
+
+    <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select class="form-control" id="power" required>
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>-->

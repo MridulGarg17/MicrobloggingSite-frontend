@@ -1,0 +1,36 @@
+﻿
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div style="color: white">
+    <ul class="navbar-nav mr-auto">
+
+      <li routerLinkActive="Active"><a routerLink="/playground">playground</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followers">followers</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followees">followees</a></li>
+      <li routerLinkActive="Active"><a routerLink="/search">Search</a></li>
+      <li routerLinkActive="Active"><a routerLink="/analytics">Analytics</a></li>
+      <li><button class="btn btn-primary" (click)="logout()" style="resize:both">logout</button> </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+
+  <div class="card" style="width:600px; border-width:5px">
+
+   
+    <div class="card-body">
+    <h5>
+      Most Trending hashtag ---> {{Bonus.MostTrending}}
+      <br><br>
+      Total Tweets today ---> {{Bonus.TotaltweetsDay}}
+      <br>
+      <br>
+      Most Active User ---> {{Bonus.ActiveUser.Firstname}} {{Bonus.ActiveUser.Lastname}}
+      <br>
+      <br>
+      Most Liked Tweet :<br>
+      {{Bonus.MostLiked.Body}} <br>
+      <p> with like counts : {{Bonus.MostLiked.Like_count}}</p>
+</h5>
+    </div>
+  </div>
+</div>

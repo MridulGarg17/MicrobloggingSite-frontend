@@ -1,0 +1,19 @@
+﻿<div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div style="color: white">
+    <ul class="navbar-nav mr-auto">
+
+      <li routerLinkActive="Active"><a routerLink="/playground">playground</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followers">followers</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followees">followees</a></li>
+      <li routerLinkActive="Active"><a routerLink="/search">Search</a></li>
+      <li routerLinkActive="Active"><a routerLink="/analytics">Analytics</a></li>
+      <li><button class="btn btn-primary" (click)="logout()" style="resize:both">logout</button> </li>
+    </ul>
+  </div>
+</nav>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+</div>

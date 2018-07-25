@@ -1,0 +1,39 @@
+﻿
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div style="color: white">
+    <ul class="navbar-nav mr-auto">
+
+      <li routerLinkActive="Active"><a routerLink="/playground">playground</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followers">followers</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followees">followees</a></li>
+      <li routerLinkActive="Active"><a routerLink="/search">Search</a></li>
+      <li routerLinkActive="Active"><a routerLink="/analytics">Analytics</a></li>
+      <li><button class="btn btn-primary" (click)="logout()" style="resize:both">logout</button> </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Search tweet/person here
+    </div>
+    <div class="panel-body">
+
+      <div class="form-group">
+        <label for="name">Search Tag</label>
+        <input type="text" id="name" class="form-control" #tag>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="searchtweetnav(tag.value)">Tweet</button>
+        <br>
+        <br>
+        <button class="btn btn-primary" (click)="searchpersonnav(tag.value)">Person</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<br>
+<div>
+  <router-outlet></router-outlet>
+  </div>

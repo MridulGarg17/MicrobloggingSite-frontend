@@ -1,0 +1,115 @@
+﻿<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div style="color: white">
+    <ul class="navbar-nav mr-auto">
+
+      <li routerLinkActive="Active"><a routerLink="/playground">playground</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followers">followers</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followees">followees</a></li>
+      <li routerLinkActive="Active"><a routerLink="/search">Search</a></li>
+      <li routerLinkActive="Active"><a routerLink="/analytics">Analytics</a></li>
+      <li><button class="btn btn-primary" (click)="logout()" style="resize:both">logout</button> </li>
+    </ul>
+  </div>
+</nav>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Compose Tweet
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">New Tweet(maximum length can be 240 only)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">tweet:</label>
+          <textarea class="form-control" id="message-text" maxlength="240" #tweet></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="compose(tweet.value)" data-dismiss="modal">Post Tweet</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+
+
+  <div class="card" style="width: 50rem;" *ngFor="let t of tweetList; let y = index;" #tweetId>
+    <div class="card-body">
+      <div class="card-text">
+        <p>{{y}}</p>
+        <p>{{t.Body}}</p>
+        <p>posted by {{t.User_name}} on {{t.Created_at}} {{t.reaction}}</p>
+        <p>Likecount :{{t.Like_count}} Dislikes : {{t.dislike_count}}</p>
+      </div>
+      <button class="btn btn-primary" [value]="t.id" (click)="Like(t.id)">Like</button>
+      <button class="btn btn-primary" [value]="t.id" (click)="DisLike(t.id)" style="margin-left:5px">Dislike</button>
+
+      <button class="btn btn-primary" *ngIf="(t.User_id==uId)" [value]="t.id " data-toggle="modal" data-target="#editmodel" style="margin-left:5px">Edit</button>
+      <div class="modal fade" id="editmodel" tabindex="-1" role="dialog" aria-labelledby="Edit" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">New Tweet(maximum length can be 240 only)</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">tweet:</label>
+                <textarea class="form-control" id="message-text" maxlength="240" value="{{t.Body}}" #tweet></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" (click)="Edit(tweet.value,t.id)" data-dismiss="modal">Post Tweet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" *ngIf="(t.User_id==uId)" [value]="t.id" (click)="Delete(t.id,t.User_id)" style="margin-left:5px">Delete</button>
+
+      <!--<button class="btn btn-primary" [value]="t.id " data-toggle="modal" (click)="GetAllUsers(t.id)" data-target="#ReactedUsers" style="margin-left:5px">AllUserReacted</button>
+      <div class="modal fade" id="ReactedUsers" tabindex="-1" role="dialog" aria-labelledby="ReactedUsers" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <ol *ngFor="let t of userlist ">
+                  <li>{{t.Firstname}} {{t.Lastname}}</li>
+                </ol>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>-->
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Modal -->

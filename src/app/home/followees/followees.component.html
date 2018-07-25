@@ -1,0 +1,26 @@
+﻿<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div style="color: white">
+    <ul class="navbar-nav mr-auto">
+
+      <li routerLinkActive="Active"><a routerLink="/playground">playground</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followers">followers</a></li>
+      <li routerLinkActive="Active"><a routerLink="/followees">followees</a></li>
+      <li routerLinkActive="Active"><a routerLink="/search">Search</a></li>
+      <li routerLinkActive="Active"><a routerLink="/analytics">Analytics</a></li>
+      <li><button class="btn btn-primary" (click)="logout()" style="resize:both">logout</button> </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="card" style="width: 18rem;" *ngFor="let t of followees;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{t.Firstname}} {{t.Lastname}}</h5>
+    </div>
+    <div class="card-body">
+      <button class="btn btn-primary"  (click)="unfollow(t.id)" style="margin-left:5px">Unfollow</button>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,27 @@
+﻿<mat-card-header>
+  <mat-toolbar class="toolbar">
+  <mat-card-title> Compose Tweet</mat-card-title>  
+  <span class="toolbar-space"></span>
+    <mat-icon (click)="onNoClick">cancel</mat-icon>
+
+  
+  </mat-toolbar>
+</mat-card-header>
+
+<mat-card-content>
+  <div class="container">
+    <!--<form [formGroup]="_composedTweet" (submit)="onSubmit()"></form>-->
+    <div class="form-group">
+      <div class="row">
+      <label for="name">Compose here</label>
+      <input type="text" id="name" class="form-control" required #tweet>
+    </div>
+      <div class="row">
+        <button class="btn btn-primary" (click)="postTweet(tweet.value)"><mat-icon>post</mat-icon></button>
+        </div>
+      </div>
+   
+   
+      
+
+    </div>
